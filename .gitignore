@@ -1,4 +1,8 @@
 *.log
 .DS_Store
 .vagrant/
+
+#python
 __pycache__/
+junit/
+.coverage
