@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-sudo apt-get install -y python3.7-venv python3.7-dev libpq-dev
+sudo apt-get install -y python3.7-venv python3.7-dev libpq-dev python3-venv
 
 #sudo apt-get install -y --no-install-recommends \
 #     build-essential libssl-dev libffi-dev \
