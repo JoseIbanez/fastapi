@@ -26,6 +26,13 @@ jobs:
         cd ./p01/tests/
         ./run_unittest.sh
         ./run_pytest.sh
+        ./run_pylint.sh
+
+    - name: Build pkg
+      run: |
+        cd $GITHUB_WORKSPACE
+        cd ./p01/deploy/
+        ./make_whl.sh
 
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
