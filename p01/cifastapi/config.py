@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+""" Get configuration for the rest of the application
+"""
+
 import json
 import os
 
@@ -22,14 +25,16 @@ def getConfig(param):
 
     try:
         with open(configFile) as json_file:
-            config = json.load(json_file)   
-    except:
+            config = json.load(json_file)
+    except OSError:
+        return None
+    except json.decoder.JSONDecodeError:
         return None
 
     value = safeget(config,param.split("."))
-    
+
     return value
-    
+
 
 def safeget(dct, keys):
     """
@@ -53,5 +58,3 @@ if __name__ == "__main__":
 
     print(f"user.1: {getConfig('user.1')}")
     print(f"user.2: {getConfig('user.2')}")
-    
-
