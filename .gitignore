@@ -6,3 +6,10 @@
 __pycache__/
 junit/
 .coverage
+dist/
+build/
+*.egg-info/
+
+#tests
+htmlcov/
+coverage.xml

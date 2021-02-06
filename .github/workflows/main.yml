@@ -33,8 +33,9 @@ jobs:
         name: dist
         path: |
           p01/dist
+
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage-report
-        path: p01/tests/code-coverage.html
+        path: p01/tests/htmlcov

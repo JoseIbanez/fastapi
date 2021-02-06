@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECT=fastapi
+PROJECT=cifastapi
 
 echo 
 echo "PyTest"
