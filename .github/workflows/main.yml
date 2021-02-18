@@ -34,6 +34,12 @@ jobs:
         cd ./p01/deploy/
         ./make_whl.sh
 
+    - name: Build Docker
+      run: |
+        cd $GITHUB_WORKSPACE
+        cd ./p01/deploy/
+        ./docker-build.sh
+
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:

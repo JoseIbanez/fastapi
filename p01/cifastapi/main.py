@@ -11,7 +11,6 @@ from apiClasses import AZ, Datacenter, TShirtSize, OperatingSystem, VMRequest, V
 from apiClasses import Item, GenericTask
 
 
-
 deployments = []
 app = FastAPI(
     title = "CI3.0 Project",
