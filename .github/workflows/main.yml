@@ -35,6 +35,9 @@ jobs:
         ./make_whl.sh
 
     - name: Build Docker
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       run: |
         cd $GITHUB_WORKSPACE
         cd ./p01/deploy/
