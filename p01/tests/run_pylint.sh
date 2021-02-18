@@ -9,7 +9,7 @@ echo
 echo "Pylint"
 cd ..
 pylint --disable=R0801,C0103 \
-    --fail-under 8.5 \
+    --fail-under 7.0 \
     $PROJECT/*.py
     
 #    || \
