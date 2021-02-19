@@ -18,8 +18,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         cd ./p01/deploy/
-        ./setup-github-python.sh
         ./generate-versionid.sh
+        ./setup-github-python.sh
 
 
     - name: Unittest
