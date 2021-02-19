@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e
 
-VERSION=`head -n 1 ./VERSION`
+TAG=`head -n 1 ./VERSION_FULL`
 
 cp requirements.txt ../cifastapi/
 cd ../cifastapi/
-TAG="$VERSION-rc.`date +%s`"
+
 echo "Build version: $TAG"
 docker build . -t ibanez/vmdeployments:$TAG -t ibanez/vmdeployments:dev-latest
 

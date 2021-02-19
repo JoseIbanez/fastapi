@@ -32,6 +32,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         cd ./p01/deploy/
+        ./generate-versionid.sh
         ./make_whl.sh
 
     - name: Build Docker
