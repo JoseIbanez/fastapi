@@ -19,6 +19,8 @@ jobs:
         cd $GITHUB_WORKSPACE
         cd ./p01/deploy/
         ./setup-github-python.sh
+        ./generate-versionid.sh
+
 
     - name: Unittest
       run: |
@@ -32,7 +34,6 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         cd ./p01/deploy/
-        ./generate-versionid.sh
         ./make_whl.sh
 
     - name: Build Docker
