@@ -5,6 +5,22 @@
 import json
 import os
 
+def getVersion():
+    """
+    Get release version
+    """
+
+    # Get version from file
+    versionFile = "/etc/cifastapi/VERSION_FULL"
+
+    try:
+        with open(versionFile) as file:
+            version = file.read()
+    except OSError:
+        return None
+
+    return version.replace("\n","")
+
 
 def getConfig(param):
     """
@@ -21,7 +37,7 @@ def getConfig(param):
         return os.environ.get(param_env)
 
     # Get config from file
-    configFile = os.environ.get("CONFIGFILE") or "./file.config"
+    configFile = os.environ.get("CONFIGFILE") or "/etc/cifastapi/file.config"
 
     try:
         with open(configFile) as json_file:

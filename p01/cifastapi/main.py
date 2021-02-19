@@ -9,7 +9,7 @@ import json
 
 from apiClasses import AZ, Datacenter, TShirtSize, OperatingSystem, VMRequest, VMInstance
 from apiClasses import Item, GenericTask
-
+from config import getVersion, getConfig
 
 deployments = []
 app = FastAPI(
@@ -22,7 +22,8 @@ app = FastAPI(
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    version = getVersion()
+    return {"Hello": "World", "version":version}
 
 
 @app.get("/items/{item_id}")
@@ -45,7 +46,7 @@ def create_vm(request: VMRequest):
     Create a VM deployment
     """
     id = len(deployments)
-    
+
     item = VMInstance(id=id)
     item.vmname = "vg1111yr"
     item.az = request.az
