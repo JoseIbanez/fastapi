@@ -1,0 +1,5 @@
+---
+# file: group_vars/ubuntu
+ansible_user: ibanez
+ansible_python_interpreter: /usr/bin/python3
+

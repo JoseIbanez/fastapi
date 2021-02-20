@@ -1,0 +1,51 @@
+---
+- name: update nginx
+  hosts: localhost
+  connection: local
+  
+  tasks:
+
+  - name: Build hosts file
+    lineinfile:
+      path: /etc/hosts
+      regexp: ' {{item}}$'
+      line: "{{ hostvars[item].ip }}  {{item}}"
+      state: present
+    with_items: "{{ groups['all'] }}"
+    become: True
+  
+  - name: install software
+    apt:
+      name:
+        - nginx
+      state: present
+      update_cache: yes
+    become: True
+
+  - name: update config
+    template:
+      src: nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+    register: result_conf
+    become: True    
+
+  - name: update site-lb
+    template:
+      src: site-lb.j2
+      dest: /etc/nginx/sites-enabled/site-lb
+    register: result_sitelb
+    become: True
+
+  - name: Ensure nginx is running.
+    service:
+      name: nginx
+      state: started
+      enabled: yes
+    become: True
+
+  - name: reload nginx service
+    systemd:
+      name: nginx
+      state: reloaded
+    become: True
+    when:  result_sitelb.changed or result_conf.changed

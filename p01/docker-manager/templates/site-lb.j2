@@ -1,0 +1,43 @@
+# sites: site-lb
+
+
+# Default server configuration
+#
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                proxy_set_header Host $host;
+                proxy_pass http://$appversion;
+
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+
+}
+
+
+upstream side_blue {
+    server h2:8001;
+    server h2:8011;
+}
+
+upstream side_green {
+    server h2:8002;
+    server h2:8012;
+}
+
+split_clients "${arg_token}" $appversion {
+    80%     side_blue;
+    *       side_green;
+}        

@@ -1,0 +1,28 @@
+---
+- name: update web servers
+  hosts: h2
+  vars_files:
+    - ./master.yml
+
+  tasks:
+        
+  - name: vmdeployment-blue1
+    community.docker.docker_container:
+      name: vmdeployments-blue1
+      image: "{{ dc.blue.image }}"
+      container_default_behavior: no_defaults
+      state: started
+      recreate: no
+      ports:
+        - '8001:5000'
+
+  - name: vmdeployment-blue2
+    community.docker.docker_container:
+      name: vmdeployments-blue2
+      image: "{{ dc.blue.image }}"
+      container_default_behavior: no_defaults
+      state: started
+      recreate: no
+      ports:
+        - '8011:5000'
+

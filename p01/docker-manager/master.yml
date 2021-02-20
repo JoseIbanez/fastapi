@@ -1,0 +1,9 @@
+
+dc:
+  blue:
+    image: "ibanez/vmdeployments:0.0.1-rc.4d73bd238109faf90aedff22b66f417932cee16c"
+    ratio: "95"
+  green:
+    image: "ibanez/vmdeployments:0.0.1-rc.5fe29b73f0a20c88c106f68b76a00b39029cbffd"
+    image-old: "ibanez/vmdeployments:0.0.1-rc.1613664308"
+    ratio: "*"

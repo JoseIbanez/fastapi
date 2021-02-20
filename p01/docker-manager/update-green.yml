@@ -1,0 +1,28 @@
+---
+- name: update web servers
+  hosts: h2
+  vars_files:
+    - ./master.yml
+
+  tasks:
+  
+  - name: vmdeployment-green1
+    community.docker.docker_container:
+      name: vmdeployments-green1
+      image: "{{ dc.green.image }}"
+      container_default_behavior: no_defaults
+      state: started
+      recreate: no
+      ports:
+        - '8002:5000'
+
+  - name: vmdeployment-green2
+    community.docker.docker_container:
+      name: vmdeployments-green2
+      image: "{{ dc.green.image }}"
+      container_default_behavior: no_defaults
+      state: started
+      recreate: no
+      ports:
+        - '8012:5000'
+
