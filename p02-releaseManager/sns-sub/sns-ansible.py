@@ -5,7 +5,6 @@ import boto3
 
 def read_from_sqs_queue():
     #queue_url = os.environ["sqs_queue_url"]
-    queue_url = "https://sqs.eu-west-1.amazonaws.com/532272748741/GitOps"
     sqs_client = boto3.client(
         "sqs",
         region_name="eu-west-1",
