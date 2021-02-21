@@ -47,3 +47,6 @@ def update_blue():
 while True:
     print(".")
     read_from_sqs_queue()
+
+
+
